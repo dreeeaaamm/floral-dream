@@ -1,1021 +1,603 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Floral Dream — цветочный магазин</title>
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #fff9f7;
-            color: #3b292d;
-        }
-
-
-        /* =========================
-           ЛОГОТИП И НАЧАЛО САЙТА
-        ========================= */
-
-        header {
-            text-align: center;
-            padding: 25px 15px 15px;
-            background: #fff9f7;
-        }
-
-        .logo {
-            width: 420px;
-            max-width: 95%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-
-        .subtitle {
-            margin-top: 10px;
-            font-size: 17px;
-            color: #94616d;
-            letter-spacing: 1px;
-        }
-
-
-        /* =========================
-           МЕНЮ
-        ========================= */
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-
-            gap: 5px;
-
-            padding: 12px;
-
-            background: rgba(255, 249, 247, 0.96);
-
-            border-top: 1px solid #efd8dc;
-            border-bottom: 1px solid #efd8dc;
-        }
-
-        nav a {
-            color: #5d3d44;
-
-            text-decoration: none;
-
-            padding: 10px 17px;
-
-            border-radius: 25px;
-
-            transition: 0.3s;
-
-            font-size: 16px;
-        }
-
-        nav a:hover {
-            background: #f3d4db;
-            color: #8c4d5d;
-        }
-
-
-        /* =========================
-           ГЛАВНЫЙ ЭКРАН
-        ========================= */
-
-        .hero {
-            text-align: center;
-
-            padding: 45px 20px 35px;
-        }
-
-        .hero h1 {
-            font-family: Georgia, serif;
-
-            font-size: 44px;
-
-            font-weight: normal;
-
-            color: #8d5361;
-
-            margin: 0 0 15px;
-        }
-
-        .hero p {
-            font-size: 18px;
-
-            color: #765961;
-        }
-
-
-        /* =========================
-           КАТЕГОРИИ
-        ========================= */
-
-        .categories {
-            max-width: 900px;
-
-            margin: 10px auto 70px;
-
-            padding: 20px;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 15px;
-        }
-
-        .category {
-            display: block;
-
-            text-align: center;
-
-            text-decoration: none;
-
-            color: #593b42;
-
-            background: #f8e4e8;
-
-            padding: 25px 10px;
-
-            border-radius: 18px;
-
-            font-size: 18px;
-
-            transition: 0.3s;
-        }
-
-        .category:hover {
-            background: #f0ccd4;
-
-            transform: translateY(-5px);
-        }
-
-        .category-icon {
-            display: block;
-
-            font-size: 35px;
-
-            margin-bottom: 10px;
-        }
-
-
-        /* =========================
-           РАЗДЕЛЫ
-        ========================= */
-
-        .section {
-            max-width: 1100px;
-
-            margin: 0 auto 80px;
-
-            padding: 20px;
-        }
-
-        .section-title {
-            text-align: center;
-
-            font-family: Georgia, serif;
-
-            font-size: 35px;
-
-            font-weight: normal;
-
-            color: #8d5361;
-
-            margin-bottom: 35px;
-        }
-
-
-        /* =========================
-           ТОВАРЫ
-        ========================= */
-
-        .products {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 25px;
-        }
-
-        .product {
-            background: white;
-
-            border-radius: 20px;
-
-            overflow: hidden;
-
-            box-shadow:0 5px 20px rgba(120, 70, 80, 0.10);
-
-            transition: 0.3s;
-        }
-
-        .product:hover {
-            transform: translateY(-5px);
-
-            box-shadow:
-                0 10px 25px rgba(120, 70, 80, 0.16);
-        }
-
-        .product img {
-            width: 100%;
-
-            height: 300px;
-
-            object-fit: cover;
-
-            display: block;
-        }
-
-        .product-info {
-            padding: 20px;
-
-            text-align: center;
-        }
-
-        .product h3 {
-            margin: 5px 0 10px;
-
-            font-family: Georgia, serif;
-
-            font-size: 22px;
-
-            color: #603e47;
-        }
-
-        .price {
-            font-size: 19px;
-
-            font-weight: bold;
-
-            color: #8d5361;
-
-            margin-bottom: 15px;
-        }
-
-
-        /* =========================
-           КНОПКА КУПИТЬ
-        ========================= */
-
-        .buy-button {
-            display: block;
-
-            width: 100%;
-
-            border: none;
-
-            background: #d79aaa;
-
-            color: white;
-
-            padding: 13px;
-
-            border-radius: 25px;
-
-            font-size: 16px;
-
-            text-decoration: none;
-
-            cursor: pointer;
-
-            transition: 0.3s;
-        }
-
-        .buy-button:hover {
-            background: #c77f91;
-        }
-
-
-        /* =========================
-           СТРАНИЦА ЗАКАЗА
-        ========================= */
-
-        #order {
-            display: none;
-
-            max-width: 700px;
-
-            min-height: 80vh;
-
-            margin: 0 auto;
-
-            padding: 80px 20px;
-
-            text-align: center;
-        }
-
-        #order h2 {
-            font-family: Georgia, serif;
-
-            font-size: 40px;
-
-            color: #8d5361;
-        }
-
-        #order p {
-            font-size: 19px;
-
-            line-height: 1.7;
-        }
-
-        #productName {
-            color: #8d5361;
-
-            font-size: 25px;
-        }
-
-        .order-buttons {
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 15px;
-
-            max-width: 350px;
-
-            margin: 30px auto;
-        }
-
-        .telegram {
-            background: #d79aaa;
-        }
-
-        .phone {
-            background: #b97989;
-        }
-
-        .back {
-            background: #eee0e3;
-
-            color: #60434b;
-        }
-
-
-        /* =========================
-           КОНТАКТЫ
-        ========================= */
-
-        .contacts {
-            text-align: center;
-
-            padding: 50px 20px;
-
-            background: #f8e4e8;
-        }
-
-        .contacts h2 {
-            font-family: Georgia, serif;
-
-            font-size: 34px;
-
-            color: #8d5361;
-        }
-
-        .contacts p {
-            font-size: 19px;
-
-            line-height: 1.8;
-        }
-
-
-        /* =========================
-           ФУТЕР
-        ========================= */
-
-        footer {
-            text-align: center;
-
-            padding: 30px 20px;
-
-            background: #f1d7dc;
-
-            color: #684952;
-        }
-
-
-        /* =========================
-           ТЕЛЕФОН
-        ========================= */
-
-        @media (max-width: 700px) {
-
-            .logo {
-                width: 350px;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .categories {
-                grid-template-columns:
-                    repeat(2, 1fr);
-
-                padding: 15px;
-            }
-
-            .products {
-                grid-template-columns:
-                    1fr;
-            }
-
-            .product img {
-                height: 330px;
-            }
-
-            nav a {
-                font-size: 14px;
-
-                padding: 8px 12px;
-            }
-
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Floral Dream — цветочный магазин</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff8fa;
+    color: #4d3540;
+}
+
+/* ШАПКА */
+header {
+    background: #fff0f4;
+    text-align: center;
+    padding: 25px 15px 15px;
+}
+
+.logo {
+    width: 220px;
+    max-width: 80%;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.slogan {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    color: #9b6677;
+    margin-bottom: 20px;
+}
+
+/* МЕНЮ */
+nav {
+    background: #ffffff;
+    border-top: 1px solid #f3dce3;
+    border-bottom: 1px solid #f3dce3;
+    padding: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.menu a,
+.dropbtn {
+    color: #5a3d48;
+    text-decoration: none;
+    font-size: 17px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+}
+
+.menu a:hover,
+.dropbtn:hover {
+    color: #c56d88;
+}
+
+/* ВЫПАДАЮЩЕЕ МЕНЮ */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    min-width: 180px;
+    box-shadow: 0 8px 20px rgba(100,50,70,0.15);
+    border-radius: 12px;
+    overflow: hidden;
+    left: 0;
+    top: 42px;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 12px 15px;
+    font-size: 15px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* ГЛАВНЫЙ БЛОК */
+.hero {
+    text-align: center;
+    padding: 60px 20px 45px;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: 48px;
+    color: #8e5368;
+    margin: 0 0 15px;
+}
+
+.hero p {
+    font-size: 20px;
+    color: #765663;
+}
+
+/* ПОИСК */
+.search-box {
+    text-align: center;
+    margin: 10px auto 35px;
+}
+
+.search-box input {
+    width: 90%;
+    max-width: 450px;
+    padding: 14px 20px;
+    border: 1px solid #e6bcc9;
+    border-radius: 30px;
+    outline: none;
+    font-size: 16px;
+    background: white;
+}
+
+.search-box input:focus {
+    border-color: #c56d88;
+}
+
+/* КАТЕГОРИИ */
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 10px 20px 45px;
+}
+
+.category {
+    background: #fff;
+    border: 1px solid #f0d5dd;
+    border-radius: 20px;
+    padding: 20px 30px;
+    text-decoration: none;
+    color: #684653;
+    font-size: 18px;
+    box-shadow: 0 5px 15px rgba(120,70,90,0.08);
+    transition: 0.3s;
+}
+
+.category:hover {
+    transform: translateY(-4px);
+    background: #fff0f4;
+}
+
+/* ТОВАРЫ */
+section {
+    padding: 50px 20px;
+}
+
+section h2 {
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 34px;
+    color: #8e5368;
+    margin-bottom: 35px;
+}
+
+.products {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(100,50,70,0.10);
+    text-align: center;
+    padding-bottom: 20px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+}
+
+.card h3 {
+    font-family: Georgia, serif;
+    color: #77495a;
+    font-size: 22px;
+    margin: 18px 10px 8px;
+}
+
+.card p {
+    color: #80616c;
+    margin: 5px 10px 15px;
+}
+
+/* КНОПКА КУПИТЬ */
+.buy {
+    display: inline-block;
+    background: #d889a0;
+    color: white;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.buy:hover {
+    background: #b96780;
+    transform: scale(1.04);
+}
+
+/* ЗАКАЗ */
+.order {
+    background: #fff0f4;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.order h2 {
+    margin-bottom: 15px;
+}
+
+.order p {
+    font-size: 18px;
+    margin: 10px;
+}
+
+.phone {
+    display: inline-block;
+    margin: 15px;
+    font-size: 23px;
+    font-weight: bold;
+    color: #8e5368;
+    text-decoration: none;
+}
+
+.telegram {
+    display: inline-block;
+    background: #d889a0;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.telegram:hover {
+    background: #b96780;
+}
+
+/* ПОДВАЛ */
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #8e5368;
+    color: white;
+}
+
+/* ТЕЛЕФОН */
+@media (max-width: 800px) {
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .menu {
+        gap: 8px;
+    }
+
+    .menu a,
+    .dropbtn {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 550px) {
+
+    header {
+        padding-top: 18px;
+    }
+
+    .logo {
+        width: 190px;
+    }
+
+    .slogan {
+        font-size: 17px;
+    }
+
+    .hero {
+        padding: 40px 15px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    .card img {
+        height: 320px;
+    }
+
+    .dropdown-content {
+        left: -30px;
+    }
+}
+</style>
 </head>
-
 
 <body>
 
+<!-- ШАПКА -->
+<header>
 
-<!-- ==================================================
-     ОСНОВНОЙ САЙТ
-================================================== -->
+    <img src="logo.png" class="logo" alt="Floral Dream">
 
-<div id="mainSite">
-
-
-    <!-- ЛОГОТИП -->
-
-    <header>
-
-        <img
-            src="logo.png"
-            alt="Floral Dream"class="logo"
-        >
-
-        <div class="subtitle">
-            Цветы, которые говорят о чувствах 🌸
-        </div>
-
-    </header>
-
-
-    <!-- МЕНЮ -->
-
-    <nav>
-
-        <a href="#home">
-            Главная
-        </a>
-
-        <a href="#bouquets">
-            Букеты
-        </a>
-
-        <a href="#toys">
-            Игрушки
-        </a>
-
-        <a href="#cards">
-            Открытки
-        </a>
-
-        <a href="#chocolate">
-            Шоколад
-        </a>
-
-        <a href="#contacts">
-            Контакты
-        </a>
-
-    </nav>
-
-
-    <!-- ГЛАВНЫЙ ЭКРАН -->
-
-    <section
-        class="hero"
-        id="home"
-    >
-
-        <h1>
-            Floral Dream
-        </h1>
-
-        <p>
-            Создаём красивые подарки
-            для самых важных людей 💕
-        </p>
-
-    </section>
-
-
-    <!-- КАТЕГОРИИ -->
-
-    <div class="categories">
-
-
-        <a
-            class="category"
-            href="#bouquets"
-        >
-
-            <span class="category-icon">
-                🌷
-            </span>
-
-            Букеты
-
-        </a>
-
-
-        <a
-            class="category"
-            href="#toys"
-        >
-
-            <span class="category-icon">
-                🧸
-            </span>
-
-            Игрушки
-
-        </a>
-
-
-        <a
-            class="category"
-            href="#cards"
-        >
-
-            <span class="category-icon">
-                💌
-            </span>
-
-            Открытки
-
-        </a>
-
-
-        <a
-            class="category"
-            href="#chocolate"
-        >
-
-            <span class="category-icon">
-                🍫
-            </span>
-
-            Шоколад
-
-        </a>
-
-
+    <div class="slogan">
+        Цветы, которые говорят о чувствах 🌸
     </div>
 
+</header>
 
+<!-- МЕНЮ -->
+<nav>
+    <div class="menu">
 
-    <!-- ==================================================
-         БУКЕТЫ
-    ================================================== -->
+        <a href="#home">Главная</a>
 
-    <section
-        class="section"
-        id="bouquets"
-    >
+        <div class="dropdown">
+            <button class="dropbtn">Каталог ▾</button>
 
-        <h2 class="section-title">
-            Букеты 🌷
-        </h2>
-
-
-        <div class="products">
-
-
-            <div class="product">
-
-                <img
-                    src="images/bouquet1.jpg"
-                    alt="Розовая нежность"
-                >
-
-                <div class="product-info">
-
-                    <h3>
-                        Розовая нежность
-                    </h3>
-
-                    <div class="price">
-                        3 500 ₽
-                    </div>
-
-                    <a
-                        href="#order"
-                        class="buy-button"
-                        onclick="openOrder('Розовая нежность')"
-                    >
-                        Купить
-                    </a>
-
-                </div>
-
+            <div class="dropdown-content">
+                <a href="#bouquets">💐 Букеты</a>
+                <a href="#toys">🧸 Игрушки</a>
+                <a href="#cards">💌 Открытки</a>
+                <a href="#chocolate">🍫 Шоколад</a>
             </div>
-
-
-            <div class="product">
-
-                <img
-                    src="images/bouquet2.jpg"
-                    alt="Любовь"
-                >
-
-                <div class="product-info">
-
-                    <h3>
-                        Любовь
-                    </h3>
-
-                    <div class="price">
-                        4 500 ₽
-                    </div>
-
-                    <a
-                        href="#order"
-                        class="buy-button"
-                        onclick="openOrder('Любовь')"
-                    >
-                        Купить
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="product">
-
-                <img
-                    src="images/bouquet3.jpg"
-                    alt="Нежный рассвет"
-                >
-
-                <div class="product-info">
-
-                    <h3>
-                        Нежный рассвет
-                    </h3>
-
-                    <div class="price">
-                        5 000 ₽
-                    </div>
-
-                    <a
-                        href="#order"
-                        class="buy-button"
-                        onclick="openOrder('Нежный рассвет')"
-                    >
-                        Купить
-                    </a>
-
-                </div>
-
-            </div>
-
-
         </div>
 
-    </section><!-- ==================================================
-         ИГРУШКИ
-    ================================================== -->
+        <a href="#bouquets">Букеты</a>
+        <a href="#toys">Игрушки</a>
+        <a href="#cards">Открытки</a>
+        <a href="#chocolate">Шоколад</a>
+        <a href="#contacts">Контакты</a>
 
-    <section
-        class="section"
-        id="toys"
+    </div>
+</nav>
+
+<!-- ГЛАВНАЯ -->
+<div class="hero" id="home">
+
+    <h1>Floral Dream</h1>
+
+    <p>
+        Создаём красивые подарки<br>
+        для самых важных людей 💗
+    </p>
+
+</div>
+
+<!-- ПОИСК -->
+<div class="search-box">
+
+    <input
+        type="text"
+        id="search"
+        placeholder="🔍 Найти букет..."
+        onkeyup="searchProducts()"
     >
 
-        <h2 class="section-title">
-            Игрушки 🧸
-        </h2>
+</div>
 
+<!-- БЫСТРЫЕ КАТЕГОРИИ -->
+<div class="categories">
 
-        <div class="products">
+    <a href="#bouquets" class="category">🌷 Букеты</a>
 
-            <div class="product">
+    <a href="#toys" class="category">🧸 Игрушки</a>
 
-                <img
-                    src="images/toy1.jpg"
-                    alt="Нежный мишка"
-                >
+    <a href="#cards" class="category">💌 Открытки</a>
 
-                <div class="product-info">
-
-                    <h3>
-                        Нежный мишка
-                    </h3>
-
-                    <div class="price">
-                        2 000 ₽
-                    </div>
-
-                    <a
-                        href="#order"
-                        class="buy-button"
-                        onclick="openOrder('Нежный мишка')"
-                    >
-                        Купить
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ==================================================
-         ОТКРЫТКИ
-    ================================================== -->
-
-    <section
-        class="section"
-        id="cards"
-    >
-
-        <h2 class="section-title">
-            Открытки 💌
-        </h2>
-
-
-        <div class="products">
-
-            <div class="product">
-
-                <img
-                    src="images/card1.jpg"
-                    alt="Открытка с любовью"
-                >
-
-                <div class="product-info">
-
-                    <h3>
-                        Открытка с любовью
-                    </h3>
-
-                    <div class="price">
-                        500 ₽
-                    </div>
-
-                    <a
-                        href="#order"
-                        class="buy-button"
-                        onclick="openOrder('Открытка с любовью')"
-                    >
-                        Купить
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ==================================================
-         ШОКОЛАД
-    ================================================== -->
-
-    <section
-        class="section"
-        id="chocolate"
-    >
-
-        <h2 class="section-title">
-            Шоколад 🍫
-        </h2>
-
-
-        <div class="products">
-
-            <div class="product">
-
-                <img
-                    src="images/chocolate1.jpg"
-                    alt="Сладкий подарок"
-                >
-
-                <div class="product-info">
-
-                    <h3>
-                        Сладкий подарок
-                    </h3>
-
-                    <div class="price">
-                        1 200 ₽
-                    </div>
-
-                    <a
-                        href="#order"
-                        class="buy-button"
-                        onclick="openOrder('Сладкий подарок')"
-                    >
-                        Купить
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ==================================================
-         КОНТАКТЫ
-    ================================================== -->
-
-    <section
-        class="contacts"
-        id="contacts"
-    >
-
-        <h2>
-            Контакты
-        </h2>
-
-        <p>
-
-            💬 Telegram:
-            <br>
-
-            <strong>
-                @ТВОЙ_USERNAME
-            </strong>
-
-            <br><br>
-
-            📞 Телефон:
-            <br>
-
-            <strong>
-                +7 XXX XXX XX XX
-            </strong>
-
-        </p>
-
-    </section>
-
-
-
-    <footer>
-
-        Floral Dream © 2026
-
-        <br><br>
-
-        Сделано с любовью 🌸
-
-    </footer>
-
+    <a href="#chocolate" class="category">🍫 Шоколад</a>
 
 </div>
 
 
+<!-- БУКЕТЫ -->
+<section id="bouquets">
 
-<!-- ==================================================
-     СТРАНИЦА ЗАКАЗА
-================================================== -->
+    <h2>💐 Наши букеты</h2>
 
-<section id="order">
+    <div class="products">
 
-    <h2>
-        Заказ 🌸
-    </h2>
+        <div class="card">
+            <img src="bouquet1.jpg" alt="Букет 1">
+            <h3>Нежный букет</h3>
+            <p>Красивый букет для особенного человека</p>
+            <a class="buy" href="#contacts">Купить</a>
+        </div>
 
-    <p>
-        Вы выбрали:
-    </p>
+        <div class="card">
+            <img src="bouquet2.jpg" alt="Букет 2">
+            <h3>Розовая нежность</h3>
+            <p>Нежные цветы в красивом оформлении</p>
+            <a class="buy" href="#contacts">Купить</a>
+        </div>
 
-    <p>
-        <strong id="productName"></strong>
-    </p>
+        <div class="card">
+            <img src="bouquet3.jpg" alt="Букет 3">
+            <h3>Цветочное настроение</h3>
+            <p>Яркий подарок для любимых</p>
+            <a class="buy" href="#contacts">Купить</a>
+        </div>
 
-    <p>
-        Для оформления заказасвяжитесь с нами через Telegram
-        или по телефону.
-    </p>
+        <div class="card">
+            <img src="bouquet4.jpg" alt="Букет 4">
+            <h3>Весенний букет</h3>
+            <p>Свежие цветы и нежное оформление</p>
+            <a class="buy" href="#contacts">Купить</a>
+        </div>
 
+        <div class="card">
+            <img src="bouquet5.jpg" alt="Букет 5">
+            <h3>Розовая мечта</h3>
+            <p>Идеальный подарок для девушки</p>
+            <a class="buy" href="#contacts">Купить</a>
+        </div>
 
-    <div class="order-buttons">
-
-
-        <!-- TELEGRAM -->
-
-        <a
-            id="telegramButton"
-            class="buy-button telegram"
-            href="https://t.me/ТВОЙ_USERNAME"
-            target="_blank"
-        >
-            💬 Заказать в Telegram
-        </a>
-
-
-        <!-- ТЕЛЕФОН -->
-
-        <a
-            class="buy-button phone"
-            href="tel:+79999999999"
-        >
-            📞 Позвонить
-        </a>
-
-
-        <!-- НАЗАД -->
-
-        <a
-            href="#"
-            class="buy-button back"
-            onclick="goBack()"
-        >
-            ← Вернуться в магазин
-        </a>
-
+        <div class="card">
+            <img src="bouquet6.jpg" alt="Букет 6">
+            <h3>Особенный подарок</h3>
+            <p>Букет, который запомнится надолго</p>
+            <a class="buy" href="#contacts">Купить</a>
+        </div>
 
     </div>
 
 </section>
 
 
+<!-- ИГРУШКИ -->
+<section id="toys">
+
+    <h2>🧸 Игрушки</h2>
+
+    <div class="products">
+
+        <div class="card">
+            <h3>Мягкие игрушки</h3>
+            <p>Милые подарки к букету</p>
+            <a class="buy" href="#contacts">Заказать</a>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ОТКРЫТКИ -->
+<section id="cards">
+
+    <h2>💌 Открытки</h2>
+
+    <div class="products">
+
+        <div class="card">
+            <h3>Открытки с пожеланиями</h3>
+            <p>Добавьте тёплые слова к своему подарку</p>
+            <a class="buy" href="#contacts">Заказать</a>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ШОКОЛАД -->
+<section id="chocolate">
+
+    <h2>🍫 Шоколад</h2>
+
+    <div class="products">
+
+        <div class="card">
+            <h3>Сладкий подарок</h3>
+            <p>Шоколад к вашему букету</p>
+            <a class="buy" href="#contacts">Заказать</a>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- КОНТАКТЫ / ЗАКАЗ -->
+<div class="order" id="contacts">
+
+    <h2>💗 Закажите свой подарок</h2>
+
+    <p>
+        Для заказа букета или подарка<br>
+        напишите нам в Telegram или позвоните
+    </p>
+
+    <a class="phone" href="tel:+79936904239">
+        📞 +7 993 690 4239
+    </a>
+
+    <br>
+
+    <!-- ПОТОМ СЮДА ВСТАВИМ ТВОЙ TELEGRAM -->
+    <a
+        class="telegram"
+        href="https://t.me/"
+        target="_blank">
+        ✈️ Написать в Telegram
+    </a>
+
+</div>
+
+
+<footer>
+
+    Floral Dream 🌸<br>
+    Цветы, которые говорят о чувствах
+
+</footer>
+
 
 <script>
 
+function searchProducts() {
 
-    /* ОТКРЫТИЕ СТРАНИЦЫ ЗАКАЗА */
+    let input = document
+        .getElementById("search")
+        .value
+        .toLowerCase();
 
-    function openOrder(product) {
+    let cards = document.querySelectorAll(".card");
 
-        document.getElementById("productName").innerText =
-            product;
+    cards.forEach(function(card) {
 
-        document.getElementById("mainSite").style.display =
-            "none";
+        let text = card.innerText.toLowerCase();
 
-        document.getElementById("order").style.display =
-            "block";
+        if (text.includes(input)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
 
-        window.scrollTo(0, 0);
-
-    }
-
-
-    /* ВОЗВРАТ В МАГАЗИН */
-
-    function goBack() {
-
-        document.getElementById("order").style.display =
-            "none";
-
-        document.getElementById("mainSite").style.display =
-            "block";
-
-        window.scrollTo(0, 0);
-
-    }
-
+    });
+}
 
 </script>
 
-
 </body>
-
 </html>
