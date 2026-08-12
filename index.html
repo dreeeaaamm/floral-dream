@@ -1,603 +1,2881 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Floral Dream — цветочный магазин</title>
+    <meta charset="UTF-8">
 
-<style>
-* {
-    box-sizing: border-box;
-}
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-html {
-    scroll-behavior: smooth;
-}
+    <meta
+        name="description"
+        content="Floral Dream — нежные букеты, сладкие композиции, игрушки и открытки."
+    >
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #fff8fa;
-    color: #4d3540;
-}
+    <title>Floral Dream — цветы и подарки</title>
 
-/* ШАПКА */
-header {
-    background: #fff0f4;
-    text-align: center;
-    padding: 25px 15px 15px;
-}
 
-.logo {
-    width: 220px;
-    max-width: 80%;
-    height: auto;
-    display: block;
-    margin: 0 auto 10px;
-}
+    <style>
 
-.slogan {
-    font-family: Georgia, serif;
-    font-size: 20px;
-    color: #9b6677;
-    margin-bottom: 20px;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* МЕНЮ */
-nav {
-    background: #ffffff;
-    border-top: 1px solid #f3dce3;
-    border-bottom: 1px solid #f3dce3;
-    padding: 12px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
 
-.menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-.menu a,
-.dropbtn {
-    color: #5a3d48;
-    text-decoration: none;
-    font-size: 17px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px 12px;
-}
 
-.menu a:hover,
-.dropbtn:hover {
-    color: #c56d88;
-}
+        body {
 
-/* ВЫПАДАЮЩЕЕ МЕНЮ */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background: white;
-    min-width: 180px;
-    box-shadow: 0 8px 20px rgba(100,50,70,0.15);
-    border-radius: 12px;
-    overflow: hidden;
-    left: 0;
-    top: 42px;
-}
+            color: #65525a;
 
-.dropdown-content a {
-    display: block;
-    padding: 12px 15px;
-    font-size: 15px;
-}
+            background:
+                linear-gradient(
+                    180deg,
+                    #fffdfc 0%,
+                    #fff8fa 45%,
+                    #fdfaff 100%
+                );
 
-.dropdown:hover .dropdown-content {
-    display: block;
-}
+        }
 
-/* ГЛАВНЫЙ БЛОК */
-.hero {
-    text-align: center;
-    padding: 60px 20px 45px;
-}
 
-.hero h1 {
-    font-family: Georgia, serif;
-    font-size: 48px;
-    color: #8e5368;
-    margin: 0 0 15px;
-}
+        :root {
 
-.hero p {
-    font-size: 20px;
-    color: #765663;
-}
+            --pink: #d99ab3;
+            --pink-dark: #bd7894;
+            --pink-light: #fff7fa;
+            --pink-soft: #fce9f1;
+            --lavender: #eee8f5;
+            --dark: #765765;
+            --text: #65525a;
+            --muted: #a38d96;
+            --border: #eee1e6;
+            --white: #ffffff;
 
-/* ПОИСК */
-.search-box {
-    text-align: center;
-    margin: 10px auto 35px;
-}
+        }
 
-.search-box input {
-    width: 90%;
-    max-width: 450px;
-    padding: 14px 20px;
-    border: 1px solid #e6bcc9;
-    border-radius: 30px;
-    outline: none;
-    font-size: 16px;
-    background: white;
-}
 
-.search-box input:focus {
-    border-color: #c56d88;
-}
+        a,
+        button {
 
-/* КАТЕГОРИИ */
-.categories {
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    flex-wrap: wrap;
-    padding: 10px 20px 45px;
-}
+            -webkit-tap-highlight-color:
+                transparent;
 
-.category {
-    background: #fff;
-    border: 1px solid #f0d5dd;
-    border-radius: 20px;
-    padding: 20px 30px;
-    text-decoration: none;
-    color: #684653;
-    font-size: 18px;
-    box-shadow: 0 5px 15px rgba(120,70,90,0.08);
-    transition: 0.3s;
-}
+        }
 
-.category:hover {
-    transform: translateY(-4px);
-    background: #fff0f4;
-}
 
-/* ТОВАРЫ */
-section {
-    padding: 50px 20px;
-}
+        .container {
 
-section h2 {
-    text-align: center;
-    font-family: Georgia, serif;
-    font-size: 34px;
-    color: #8e5368;
-    margin-bottom: 35px;
-}
+            width:
+                min(
+                    1180px,
+                    calc(100% - 40px)
+                );
 
-.products {
-    max-width: 1100px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-}
+            margin:
+                0 auto;
 
-.card {
-    background: white;
-    border-radius: 22px;
-    overflow: hidden;
-    box-shadow: 0 6px 20px rgba(100,50,70,0.10);
-    text-align: center;
-    padding-bottom: 20px;
-    transition: 0.3s;
-}
+        }
 
-.card:hover {
-    transform: translateY(-5px);
-}
 
-.card img {
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
-    display: block;
-}
 
-.card h3 {
-    font-family: Georgia, serif;
-    color: #77495a;
-    font-size: 22px;
-    margin: 18px 10px 8px;
-}
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
-.card p {
-    color: #80616c;
-    margin: 5px 10px 15px;
-}
+        .header {
 
-/* КНОПКА КУПИТЬ */
-.buy {
-    display: inline-block;
-    background: #d889a0;
-    color: white;
-    text-decoration: none;
-    padding: 12px 28px;
-    border-radius: 30px;
-    font-size: 16px;
-    transition: 0.3s;
-}
+            position:
+                sticky;
 
-.buy:hover {
-    background: #b96780;
-    transform: scale(1.04);
-}
+            top:
+                0;
 
-/* ЗАКАЗ */
-.order {
-    background: #fff0f4;
-    text-align: center;
-    padding: 60px 20px;
-}
+            z-index:
+                1000;
 
-.order h2 {
-    margin-bottom: 15px;
-}
+            background:
+                rgba(
+                    255,
+                    253,
+                    252,
+                    0.94
+                );
 
-.order p {
-    font-size: 18px;
-    margin: 10px;
-}
+            backdrop-filter:
+                blur(15px);
 
-.phone {
-    display: inline-block;
-    margin: 15px;
-    font-size: 23px;
-    font-weight: bold;
-    color: #8e5368;
-    text-decoration: none;
-}
+            border-bottom:
+                1px solid
+                #f0e4e8;
 
-.telegram {
-    display: inline-block;
-    background: #d889a0;
-    color: white;
-    padding: 14px 30px;
-    border-radius: 30px;
-    text-decoration: none;
-    margin-top: 10px;
-}
+        }
 
-.telegram:hover {
-    background: #b96780;
-}
 
-/* ПОДВАЛ */
-footer {
-    text-align: center;
-    padding: 25px;
-    background: #8e5368;
-    color: white;
-}
+        .header-inner {
 
-/* ТЕЛЕФОН */
-@media (max-width: 800px) {
+            min-height:
+                78px;
 
-    .hero h1 {
-        font-size: 38px;
-    }
+            display:
+                flex;
 
-    .products {
-        grid-template-columns: repeat(2, 1fr);
-    }
+            align-items:
+                center;
 
-    .menu {
-        gap: 8px;
-    }
+            gap:
+                25px;
 
-    .menu a,
-    .dropbtn {
-        font-size: 15px;
-    }
-}
+        }
 
-@media (max-width: 550px) {
 
-    header {
-        padding-top: 18px;
-    }
+        .header-brand {
 
-    .logo {
-        width: 190px;
-    }
+            display:
+                flex;
 
-    .slogan {
-        font-size: 17px;
-    }
+            align-items:
+                center;
 
-    .hero {
-        padding: 40px 15px;
-    }
+            text-decoration:
+                none;
 
-    .hero h1 {
-        font-size: 34px;
-    }
+            width:
+                180px;
 
-    .hero p {
-        font-size: 17px;
-    }
+        }
 
-    .products {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-    }
 
-    .card img {
-        height: 320px;
-    }
+        .header-brand img {
 
-    .dropdown-content {
-        left: -30px;
-    }
-}
-</style>
+            width:
+                100%;
+
+            height:
+                auto;
+
+            display:
+                block;
+
+        }
+
+
+        .menu {
+
+            flex:
+                1;
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            gap:
+                28px;
+
+        }
+
+
+        .menu a {
+
+            color:
+                #765e68;
+
+            text-decoration:
+                none;
+
+            font-size:
+                13px;
+
+            font-weight:
+                600;
+
+            transition:
+                0.2s;
+
+        }
+
+
+        .menu a:hover {
+
+            color:
+                var(--pink-dark);
+
+        }
+
+
+        .telegram-button {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                11px 18px;
+
+            color:
+                #765765;
+
+            text-decoration:
+                none;
+
+            background:
+                #fff5f8;
+
+            border:
+                1px solid
+                #e8cbd5;
+
+            border-radius:
+                30px;
+
+            font-size:
+                12px;
+
+            font-weight:
+                700;
+
+            transition:
+                0.2s;
+
+        }
+
+
+        .telegram-button:hover {
+
+            color:
+                white;
+
+            background:
+                var(--pink);
+
+            border-color:
+                var(--pink);
+
+        }
+
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            overflow:
+                hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at 80% 45%,
+                    #f8eaf0,
+                    transparent 36%
+                ),
+
+                radial-gradient(
+                    circle at 20% 20%,
+                    #f3eef8,
+                    transparent 35%
+                ),
+
+                linear-gradient(
+                    120deg,
+                    #fffaf9,
+                    #fff4f7
+                );
+
+        }
+
+
+        .hero-content {
+
+            min-height:
+                470px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+        }
+
+
+        .hero-text {
+
+            width:
+                55%;
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            padding-left:
+                35px;
+
+        }
+
+
+        .hero-script-title {
+
+            color:
+                #735663;
+
+            font-family:
+                "Brush Script MT",
+                "Segoe Script",
+                "Snell Roundhand",
+                "URW Chancery L",
+                cursive;
+
+            font-size:
+                clamp(
+                    65px,
+                    8vw,
+                    105px
+                );
+
+            font-weight:
+                400;
+
+            font-style:
+                italic;
+
+            line-height:
+                1;
+
+            letter-spacing:
+                1px;
+
+            text-shadow:
+                0 5px 16px
+                rgba(
+                    115,
+                    86,
+                    99,
+                    0.10
+                );
+
+        }
+
+
+        .hero-script-subtitle {
+
+            margin-top:
+                18px;
+
+            color:
+                #b28d9d;
+
+            font-family:
+                "Segoe Script",
+                "Brush Script MT",
+                "Snell Roundhand",
+                cursive;
+
+            font-size:
+                clamp(
+                    17px,
+                    2vw,
+                    22px
+                );
+
+            font-style:
+                italic;
+
+            line-height:
+                1.5;
+
+            max-width:
+                500px;
+
+        }
+
+
+        .hero-line {
+
+            width:
+                75px;
+
+            height:
+                1px;
+
+            margin-top:
+                25px;
+
+            background:
+                #d9a5b8;
+
+        }
+
+
+
+        /* =====================================================
+           HERO LOGO
+        ===================================================== */
+
+        .hero-image {
+
+            width:
+                45%;
+
+            height:
+                350px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            position:
+                relative;
+
+        }
+
+
+        .hero-image::before {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            width:
+                280px;
+
+            height:
+                280px;
+
+            border-radius:
+                50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0.9
+                    ),
+                    rgba(
+                        248,
+                        226,
+                        235,
+                        0.12
+                    )
+                );
+
+            filter:
+                blur(3px);
+
+        }
+
+
+        .hero-image img {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            width:
+                78%;
+
+            max-width:
+                340px;
+
+            height:
+                auto;
+
+            max-height:
+                320px;
+
+            object-fit:
+                contain;
+
+            filter:
+                drop-shadow(
+                    0 14px 22px
+                    rgba(
+                        120,
+                        80,
+                        100,
+                        0.10
+                    )
+                );
+
+        }
+
+
+
+        /* =====================================================
+           КАТЕГОРИИ
+        ===================================================== */
+
+        .categories {
+
+            position:
+                relative;
+
+            z-index:
+                5;
+
+            margin-top:
+                -25px;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    4,
+                    1fr
+                );
+
+            gap:
+                17px;
+
+        }
+
+
+        .category {
+
+            min-height:
+                110px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                7px;
+
+            color:
+                var(--dark);
+
+            text-decoration:
+                none;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.96
+                );
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                20px;
+
+            box-shadow:
+                0 10px 28px
+                rgba(
+                    100,
+                    70,
+                    80,
+                    0.06
+                );
+
+            transition:
+                0.25s;
+
+        }
+
+
+        .category:hover {
+
+            transform:
+                translateY(-4px);
+
+        }
+
+
+        .category-icon {
+
+            font-size:
+                34px;
+
+        }
+
+
+        .category strong {
+
+            font-size:
+                13px;
+
+        }
+
+
+
+        /* =====================================================
+           CATALOG
+        ===================================================== */
+
+        .catalog {
+
+            padding-top:
+                65px;
+
+        }
+
+
+        .products-section {
+
+            margin-bottom:
+                80px;
+
+            scroll-margin-top:
+                100px;
+
+        }
+
+
+        .section-title {
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                flex-end;
+
+            margin-bottom:
+                21px;
+
+        }
+
+
+        .section-title h2 {
+
+            color:
+                var(--dark);
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                30px;
+
+            font-weight:
+                normal;
+
+        }
+
+
+        .section-title p {
+
+            color:
+                var(--muted);
+
+            font-size:
+                13px;
+
+            margin-top:
+                6px;
+
+        }
+
+
+        .product-count {
+
+            padding:
+                8px 14px;
+
+            color:
+                #bd8199;
+
+            background:
+                #fff6f9;
+
+            border:
+                1px solid
+                #ead3dc;
+
+            border-radius:
+                20px;
+
+            font-size:
+                11px;
+
+            font-weight:
+                700;
+
+        }
+
+
+
+        /* =====================================================
+           PRODUCTS
+        ===================================================== */
+
+        .products {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    4,
+                    1fr
+                );
+
+            gap:
+                18px;
+
+        }
+
+
+        .product {
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+            background:
+                white;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                18px;
+
+            box-shadow:
+                0 8px 22px
+                rgba(
+                    100,
+                    70,
+                    80,
+                    0.055
+                );
+
+            transition:
+                0.25s;
+
+        }
+
+
+        .product:hover {
+
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 15px 30px
+                rgba(
+                    100,
+                    70,
+                    80,
+                    0.1
+                );
+
+        }
+
+
+        .product-image {
+
+            width:
+                100%;
+
+            height:
+                245px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            overflow:
+                hidden;
+
+            background:
+                #faf4f6;
+
+        }
+
+
+        .product-image img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            display:
+                block;
+
+            object-fit:
+                cover;
+
+            transition:
+                transform
+                0.4s;
+
+        }
+
+
+        .product:hover
+        .product-image img {
+
+            transform:
+                scale(1.035);
+
+        }
+
+
+        .product-placeholder {
+
+            font-size:
+                70px;
+
+        }
+
+
+
+        /* =====================================================
+           FAVORITE
+        ===================================================== */
+
+        .favorite {
+
+            position:
+                absolute;
+
+            right:
+                10px;
+
+            top:
+                10px;
+
+            z-index:
+                3;
+
+            width:
+                35px;
+
+            height:
+                35px;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            color:
+                #c88da3;
+
+            background:
+                white;
+
+            border:
+                none;
+
+            border-radius:
+                50%;
+
+            font-size:
+                20px;
+
+            cursor:
+                pointer;
+
+        }
+
+
+        .favorite.active {
+
+            color:
+                white;
+
+            background:
+                #d99ab3;
+
+        }
+
+
+
+        /* =====================================================
+           PRODUCT INFO
+        ===================================================== */
+
+        .product-info {
+
+            padding:
+                15px;
+
+        }
+
+
+        .product-name {
+
+            min-height:
+                38px;
+
+            color:
+                #66515a;
+
+            font-size:
+                14px;
+
+            font-weight:
+                700;
+
+            line-height:
+                1.4;
+
+        }
+
+
+        .product-price {
+
+            margin:
+                7px 0 12px;
+
+            color:
+                #c7869f;
+
+            font-size:
+                18px;
+
+            font-weight:
+                800;
+
+        }
+
+
+
+        /* =====================================================
+           BUY BUTTON
+        ===================================================== */
+
+        .buy-button {
+
+            width:
+                100%;
+
+            padding:
+                12px;
+
+            border:
+                1px solid
+                #e5c4d0;
+
+            border-radius:
+                12px;
+
+            color:
+                #765765;
+
+            background:
+                #fff7fa;
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
+
+            cursor:
+                pointer;
+
+            transition:
+                0.2s;
+
+        }
+
+
+        .buy-button:hover {
+
+            color:
+                white;
+
+            background:
+                #d99ab3;
+
+            border-color:
+                #d99ab3;
+
+        }
+
+
+
+        /* =====================================================
+           SWIPE HINT
+        ===================================================== */
+
+        .swipe-hint {
+
+            display:
+                none;
+
+            color:
+                #b096a0;
+
+            font-size:
+                11px;
+
+            text-align:
+                center;
+
+            margin-top:
+                5px;
+
+        }
+
+
+
+        /* =====================================================
+           TELEGRAM BANNER
+        ===================================================== */
+
+        .telegram-banner {
+
+            padding:
+                38px 0;
+
+            background:
+                linear-gradient(
+                    100deg,
+                    #fff4f7,
+                    #f6f1f9
+                );
+
+        }
+
+
+        .telegram-content {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                25px;
+
+        }
+
+
+        .telegram-info {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                17px;
+
+        }
+
+
+        .telegram-icon {
+
+            width:
+                55px;
+
+            height:
+                55px;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            color:
+                #8e7180;
+
+            background:
+                #f1e9f4;
+
+            border-radius:
+                50%;
+
+            font-size:
+                22px;
+
+        }
+
+
+        .telegram-info h3 {
+
+            color:
+                var(--dark);
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                21px;
+
+            font-weight:
+                normal;
+
+        }
+
+
+        .telegram-info p {
+
+            color:
+                #927c85;
+
+            font-size:
+                13px;
+
+            margin-top:
+                5px;
+
+        }
+
+
+        .main-button {
+
+            display:
+                inline-flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            padding:
+                13px 22px;
+
+            color:
+                white;
+
+            background:
+                #d99ab3;
+
+            border:
+                none;
+
+            border-radius:
+                25px;
+
+            text-decoration:
+                none;
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
+
+        }
+
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            padding:
+                27px 0;
+
+            background:
+                #fffdfc;
+
+        }
+
+
+        .footer {
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            color:
+                #aa949c;
+
+            font-size:
+                12px;
+
+        }
+
+
+
+        /* =====================================================
+           TOAST
+        ===================================================== */
+
+        .toast {
+
+            position:
+                fixed;
+
+            left:
+                50%;
+
+            bottom:
+                25px;
+
+            z-index:
+                2000;
+
+            transform:
+                translate(
+                    -50%,
+                    100px
+                );
+
+            opacity:
+                0;
+
+            padding:
+                14px 20px;
+
+            color:
+                #765765;
+
+            background:
+                #fff7fa;
+
+            border:
+                1px solid
+                #e4c7d1;
+
+            border-radius:
+                12px;
+
+            font-size:
+                13px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(
+                    100,
+                    70,
+                    80,
+                    0.12
+                );
+
+            transition:
+                0.3s;
+
+        }
+
+
+        .toast.show {
+
+            transform:
+                translate(
+                    -50%,
+                    0
+                );
+
+            opacity:
+                1;
+
+        }
+
+
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .menu {
+
+                gap:
+                    15px;
+
+            }
+
+
+            .menu a {
+
+                font-size:
+                    11px;
+
+            }
+
+
+            .products {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        1fr
+                    );
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+
+            .container {
+
+                width:
+                    calc(
+                        100% - 24px
+                    );
+
+            }
+
+
+            /* HEADER */
+
+            .header-inner {
+
+                min-height:
+                    67px;
+
+                gap:
+                    10px;
+
+            }
+
+
+            .header-brand {
+
+                width:
+                    145px;
+
+            }
+
+
+            .menu {
+
+                display:
+                    none;
+
+            }
+
+
+            .telegram-button {
+
+                margin-left:
+                    auto;
+
+                padding:
+                    9px 13px;
+
+                font-size:
+                    11px;
+
+            }
+
+
+
+            /* HERO */
+
+            .hero-content {
+
+                min-height:
+                    390px;
+
+                flex-direction:
+                    column;
+
+                justify-content:
+                    center;
+
+                text-align:
+                    center;
+
+                padding:
+                    35px 0;
+
+            }
+
+
+            .hero-text {
+
+                width:
+                    100%;
+
+                padding-left:
+                    0;
+
+            }
+
+
+            .hero-script-title {
+
+                font-size:
+                    58px;
+
+            }
+
+
+            .hero-script-subtitle {
+
+                font-size:
+                    15px;
+
+                max-width:
+                    330px;
+
+                margin-left:
+                    auto;
+
+                margin-right:
+                    auto;
+
+            }
+
+
+            .hero-line {
+
+                margin:
+                    20px auto 0;
+
+            }
+
+
+            .hero-image {
+
+                width:
+                    100%;
+
+                height:
+                    145px;
+
+                margin-top:
+                    12px;
+
+            }
+
+
+            .hero-image::before {
+
+                width:
+                    130px;
+
+                height:
+                    130px;
+
+            }
+
+
+            .hero-image img {
+
+                width:
+                    145px;
+
+                max-height:
+                    140px;
+
+            }
+
+
+
+            /* CATEGORIES */
+
+            .categories {
+
+                margin-top:
+                    15px;
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        1fr
+                    );
+
+                gap:
+                    10px;
+
+            }
+
+
+            .category {
+
+                min-height:
+                    94px;
+
+            }
+
+
+            .category-icon {
+
+                font-size:
+                    29px;
+
+            }
+
+
+
+            /* CATALOG */
+
+            .catalog {
+
+                padding-top:
+                    48px;
+
+            }
+
+
+
+            /* =================================================
+               МОБИЛЬНАЯ ЛЕНТА ТОВАРОВ
+            ================================================= */
+
+            .products {
+
+                display:
+                    flex;
+
+                overflow-x:
+                    auto;
+
+                gap:
+                    14px;
+
+                padding:
+                    5px 2px 18px;
+
+                scroll-snap-type:
+                    x mandatory;
+
+                scroll-behavior:
+                    smooth;
+
+                -webkit-overflow-scrolling:
+                    touch;
+
+            }
+
+
+            .product {
+
+                flex:
+                    0 0
+                    calc(
+                        100vw - 28px
+                    );
+
+                width:
+                    calc(
+                        100vw - 28px
+                    );
+
+                max-width:
+                    calc(
+                        100vw - 28px
+                    );
+
+                scroll-snap-align:
+                    center;
+
+            }
+
+
+            .product-image {
+
+                height:
+                    min(
+                        70vw,
+                        390px
+                    );
+
+            }
+
+
+            .product-info {
+
+                padding:
+                    17px;
+
+            }
+
+
+            .product-name {
+
+                font-size:
+                    16px;
+
+            }
+
+
+            .product-price {
+
+                font-size:
+                    20px;
+
+            }
+
+
+            .buy-button {
+
+                padding:
+                    14px;
+
+                font-size:
+                    14px;
+
+            }
+
+
+            .products::-webkit-scrollbar {
+
+                height:
+                    4px;
+
+            }
+
+
+            .products::-webkit-scrollbar-track {
+
+                background:
+                    #f6e9ee;
+
+                border-radius:
+                    10px;
+
+            }
+
+
+            .products::-webkit-scrollbar-thumb {
+
+                background:
+                    #dfb0c1;
+
+                border-radius:
+                    10px;
+
+            }
+
+
+            .swipe-hint {
+
+                display:
+                    block;
+
+            }
+
+
+
+            /* SECTION */
+
+            .section-title {
+
+                align-items:
+                    flex-start;
+
+            }
+
+
+            .section-title h2 {
+
+                font-size:
+                    25px;
+
+            }
+
+
+            .product-count {
+
+                display:
+                    none;
+
+            }
+
+
+
+            /* TELEGRAM */
+
+            .telegram-content {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    stretch;
+
+            }
+
+
+            .telegram-content
+            .main-button {
+
+                width:
+                    100%;
+
+            }
+
+
+
+            /* FOOTER */
+
+            .footer {
+
+                flex-direction:
+                    column;
+
+                gap:
+                    8px;
+
+                text-align:
+                    center;
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           SMALL PHONE
+        ===================================================== */
+
+        @media (max-width: 430px) {
+
+
+            .hero-script-title {
+
+                font-size:
+                    49px;
+
+            }
+
+
+            .hero-script-subtitle {
+
+                font-size:
+                    13px;
+
+            }
+
+
+            .hero-image {
+
+                height:
+                    130px;
+
+            }
+
+
+            .hero-image img {
+
+                width:
+                    125px;
+
+                max-height:
+                    125px;
+
+            }
+
+
+            .product {
+
+                flex-basis:
+                    calc(
+                        100vw - 24px
+                    );
+
+                width:
+                    calc(
+                        100vw - 24px
+                    );
+
+            }
+
+
+            .product-image {
+
+                height:
+                    300px;
+
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<!-- ШАПКА -->
-<header>
 
-    <img src="logo.png" class="logo" alt="Floral Dream">
 
-    <div class="slogan">
-        Цветы, которые говорят о чувствах 🌸
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="container header-inner">
+
+
+        <a
+            href="#home"
+            class="header-brand"
+        >
+
+            <img
+                src="logo.png"
+                alt="Floral Dream"
+            >
+
+        </a>
+
+
+        <nav class="menu">
+
+            <a href="#bouquets">
+                Букеты
+            </a>
+
+            <a href="#sweet">
+                Сладкие букеты
+            </a>
+
+            <a href="#toys">
+                Игрушки
+            </a>
+
+            <a href="#cards">
+                Открытки
+            </a>
+
+        </nav>
+
+
+        <a
+            href="https://t.me/YOUR_CHANNEL"
+            target="_blank"
+            class="telegram-button"
+        >
+            Telegram
+        </a>
+
+
     </div>
 
 </header>
 
-<!-- МЕНЮ -->
-<nav>
-    <div class="menu">
 
-        <a href="#home">Главная</a>
 
-        <div class="dropdown">
-            <button class="dropbtn">Каталог ▾</button>
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-            <div class="dropdown-content">
-                <a href="#bouquets">💐 Букеты</a>
-                <a href="#toys">🧸 Игрушки</a>
-                <a href="#cards">💌 Открытки</a>
-                <a href="#chocolate">🍫 Шоколад</a>
+<section
+    class="hero"
+    id="home"
+>
+
+
+    <div class="container hero-content">
+
+
+        <div class="hero-text">
+
+
+            <div class="hero-script-title">
+                Floral Dream
             </div>
+
+
+            <div class="hero-script-subtitle">
+                Цветы, которые говорят о чувствах
+            </div>
+
+
+            <div class="hero-line"></div>
+
+
         </div>
 
-        <a href="#bouquets">Букеты</a>
-        <a href="#toys">Игрушки</a>
-        <a href="#cards">Открытки</a>
-        <a href="#chocolate">Шоколад</a>
-        <a href="#contacts">Контакты</a>
+
+
+        <div class="hero-image">
+
+            <img
+                src="logo.png"
+                alt="Floral Dream"
+            >
+
+        </div>
+
 
     </div>
-</nav>
 
-<!-- ГЛАВНАЯ -->
-<div class="hero" id="home">
+</section>
 
-    <h1>Floral Dream</h1>
 
-    <p>
-        Создаём красивые подарки<br>
-        для самых важных людей 💗
-    </p>
 
-</div>
+<!-- =====================================================
+     CATEGORIES
+===================================================== -->
 
-<!-- ПОИСК -->
-<div class="search-box">
+<section class="categories container">
 
-    <input
-        type="text"
-        id="search"
-        placeholder="🔍 Найти букет..."
-        onkeyup="searchProducts()"
+
+    <a
+        href="#bouquets"
+        class="category"
     >
 
-</div>
+        <span class="category-icon">
+            💐
+        </span>
 
-<!-- БЫСТРЫЕ КАТЕГОРИИ -->
-<div class="categories">
+        <strong>
+            Букеты
+        </strong>
 
-    <a href="#bouquets" class="category">🌷 Букеты</a>
-
-    <a href="#toys" class="category">🧸 Игрушки</a>
-
-    <a href="#cards" class="category">💌 Открытки</a>
-
-    <a href="#chocolate" class="category">🍫 Шоколад</a>
-
-</div>
-
-
-<!-- БУКЕТЫ -->
-<section id="bouquets">
-
-    <h2>💐 Наши букеты</h2>
-
-    <div class="products">
-
-        <div class="card">
-            <img src="bouquet1.jpg" alt="Букет 1">
-            <h3>Нежный букет</h3>
-            <p>Красивый букет для особенного человека</p>
-            <a class="buy" href="#contacts">Купить</a>
-        </div>
-
-        <div class="card">
-            <img src="bouquet2.jpg" alt="Букет 2">
-            <h3>Розовая нежность</h3>
-            <p>Нежные цветы в красивом оформлении</p>
-            <a class="buy" href="#contacts">Купить</a>
-        </div>
-
-        <div class="card">
-            <img src="bouquet3.jpg" alt="Букет 3">
-            <h3>Цветочное настроение</h3>
-            <p>Яркий подарок для любимых</p>
-            <a class="buy" href="#contacts">Купить</a>
-        </div>
-
-        <div class="card">
-            <img src="bouquet4.jpg" alt="Букет 4">
-            <h3>Весенний букет</h3>
-            <p>Свежие цветы и нежное оформление</p>
-            <a class="buy" href="#contacts">Купить</a>
-        </div>
-
-        <div class="card">
-            <img src="bouquet5.jpg" alt="Букет 5">
-            <h3>Розовая мечта</h3>
-            <p>Идеальный подарок для девушки</p>
-            <a class="buy" href="#contacts">Купить</a>
-        </div>
-
-        <div class="card">
-            <img src="bouquet6.jpg" alt="Букет 6">
-            <h3>Особенный подарок</h3>
-            <p>Букет, который запомнится надолго</p>
-            <a class="buy" href="#contacts">Купить</a>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ИГРУШКИ -->
-<section id="toys">
-
-    <h2>🧸 Игрушки</h2>
-
-    <div class="products">
-
-        <div class="card">
-            <h3>Мягкие игрушки</h3>
-            <p>Милые подарки к букету</p>
-            <a class="buy" href="#contacts">Заказать</a>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ОТКРЫТКИ -->
-<section id="cards">
-
-    <h2>💌 Открытки</h2>
-
-    <div class="products">
-
-        <div class="card">
-            <h3>Открытки с пожеланиями</h3>
-            <p>Добавьте тёплые слова к своему подарку</p>
-            <a class="buy" href="#contacts">Заказать</a>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ШОКОЛАД -->
-<section id="chocolate">
-
-    <h2>🍫 Шоколад</h2>
-
-    <div class="products">
-
-        <div class="card">
-            <h3>Сладкий подарок</h3>
-            <p>Шоколад к вашему букету</p>
-            <a class="buy" href="#contacts">Заказать</a>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- КОНТАКТЫ / ЗАКАЗ -->
-<div class="order" id="contacts">
-
-    <h2>💗 Закажите свой подарок</h2>
-
-    <p>
-        Для заказа букета или подарка<br>
-        напишите нам в Telegram или позвоните
-    </p>
-
-    <a class="phone" href="tel:+79936904239">
-        📞 +7 993 690 4239
     </a>
 
-    <br>
 
-    <!-- ПОТОМ СЮДА ВСТАВИМ ТВОЙ TELEGRAM -->
     <a
-        class="telegram"
-        href="https://t.me/"
-        target="_blank">
-        ✈️ Написать в Telegram
+        href="#sweet"
+        class="category"
+    >
+
+        <span class="category-icon">
+            🍓
+        </span>
+
+        <strong>
+            Сладкие букеты
+        </strong>
+
     </a>
 
-</div>
 
+    <a
+        href="#toys"
+        class="category"
+    >
+
+        <span class="category-icon">
+            🧸
+        </span>
+
+        <strong>
+            Игрушки
+        </strong>
+
+    </a>
+
+
+    <a
+        href="#cards"
+        class="category"
+    >
+
+        <span class="category-icon">
+            💌
+        </span>
+
+        <strong>
+            Открытки
+        </strong>
+
+    </a>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     CATALOG
+===================================================== -->
+
+<main class="container catalog">
+
+
+
+    <!-- =================================================
+         БУКЕТЫ
+    ================================================= -->
+
+    <section
+        class="products-section"
+        id="bouquets"
+    >
+
+
+        <div class="section-title">
+
+            <div>
+
+                <h2>
+                    💐 Обычные букеты
+                </h2>
+
+                <p>
+                    Красивые композиции на любой случай
+                </p>
+
+            </div>
+
+
+            <span class="product-count">
+                28 товаров
+            </span>
+
+        </div>
+
+
+        <div
+            class="products"
+            id="bouquets-list"
+        ></div>
+
+
+        <div class="swipe-hint">
+            ← Листайте пальцем →
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         СЛАДКИЕ БУКЕТЫ
+    ================================================= -->
+
+    <section
+        class="products-section"
+        id="sweet"
+    >
+
+
+        <div class="section-title">
+
+            <div>
+
+                <h2>
+                    🍓 Сладкие букеты
+                </h2>
+
+                <p>
+                    Цветы и сладости в одном подарке
+                </p>
+
+            </div>
+
+
+            <span class="product-count">
+                7 товаров
+            </span>
+
+        </div>
+
+
+        <div
+            class="products"
+            id="sweet-list"
+        ></div>
+
+
+        <div class="swipe-hint">
+            ← Листайте пальцем →
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         ИГРУШКИ
+    ================================================= -->
+
+    <section
+        class="products-section"
+        id="toys"
+    >
+
+
+        <div class="section-title">
+
+            <div>
+
+                <h2>
+                    🧸 Игрушки
+                </h2>
+
+                <p>
+                    Мягкие подарки для любимых
+                </p>
+
+            </div>
+
+
+            <span class="product-count">
+                5 товаров
+            </span>
+
+        </div>
+
+
+        <div
+            class="products"
+            id="toys-list"
+        ></div>
+
+
+        <div class="swipe-hint">
+            ← Листайте пальцем →
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         ОТКРЫТКИ
+    ================================================= -->
+
+    <section
+        class="products-section"
+        id="cards"
+    >
+
+
+        <div class="section-title">
+
+            <div>
+
+                <h2>
+                    💌 Открытки
+                </h2>
+
+                <p>
+                    Добавьте тёплые слова к подарку
+                </p>
+
+            </div>
+
+
+            <span class="product-count">
+                5 товаров
+            </span>
+
+        </div>
+
+
+        <div
+            class="products"
+            id="cards-list"
+        ></div>
+
+
+        <div class="swipe-hint">
+            ← Листайте пальцем →
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     TELEGRAM
+===================================================== -->
+
+<section class="telegram-banner">
+
+
+    <div class="container telegram-content">
+
+
+        <div class="telegram-info">
+
+
+            <div class="telegram-icon">
+                ✈
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Хотите сделать заказ?
+                </h3>
+
+                <p>
+                    Выберите понравившийся товар
+                    и напишите нам в Telegram.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <a
+            href="https://t.me/YOUR_CHANNEL"
+            target="_blank"
+            class="main-button"
+        >
+            Наш Telegram
+        </a>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
-    Floral Dream 🌸<br>
-    Цветы, которые говорят о чувствах
+
+    <div class="container footer">
+
+        <span>
+            © 2026 Floral Dream ♥
+        </span>
+
+        <span>
+            Цветы, подарки и хорошее настроение
+        </span>
+
+    </div>
+
 
 </footer>
 
 
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+
 <script>
 
-function searchProducts() {
 
-    let input = document
-        .getElementById("search")
-        .value
-        .toLowerCase();
+/* =====================================================
+   TELEGRAM
+===================================================== */
 
-    let cards = document.querySelectorAll(".card");
+/*
+   ПОТОМ ЗАМЕНИ YOUR_CHANNEL
+   НА НАЗВАНИЕ СВОЕГО TELEGRAM.
 
-    cards.forEach(function(card) {
+   Например:
 
-        let text = card.innerText.toLowerCase();
+   https://t.me/floraldream
+*/
 
-        if (text.includes(input)) {
-            card.style.display = "";
-        } else {
-            card.style.display = "none";
-        }
+const TELEGRAM_CHANNEL =
+    "https://t.me/YOUR_CHANNEL";
 
-    });
+
+
+/* =====================================================
+   БУКЕТЫ — 28 ШТУК
+===================================================== */
+
+const bouquets = [
+
+    ["Розовый рассвет", 1450],
+    ["Белое облако", 1350],
+    ["Розовая мечта", 1550],
+    ["Нежная классика", 1490],
+
+    ["Алые чувства", 1690],
+    ["Весеннее настроение", 1390],
+    ["Пудровая нежность", 1590],
+    ["Солнечный день", 1450],
+
+    ["Цветочный поцелуй", 1650],
+    ["Нежность", 1520],
+    ["Малиновый закат", 1580],
+    ["Лавандовая сказка", 1470],
+
+    ["Белая симфония", 1720],
+    ["Розовый сад", 1800],
+    ["Яркое настроение", 1550],
+    ["Для тебя", 1490],
+
+    ["Тёплое признание", 1650],
+    ["Сладкая нежность", 1580],
+    ["Пастельный сон", 1750],
+    ["Бархатные розы", 1900],
+
+    ["Летний букет", 1420],
+    ["Мечта", 1600],
+    ["Воздушный", 1510],
+    ["Романтика", 1780],
+
+    ["Цветочный комплимент", 1480],
+    ["Любовь с первого взгляда", 1950],
+    ["Королевский", 2100],
+    ["Большая нежность", 2250]
+
+];
+
+
+
+/* =====================================================
+   СЛАДКИЕ БУКЕТЫ — 7 ШТУК
+===================================================== */
+
+const sweetBouquets = [
+
+    ["Клубничный рай", 1850],
+    ["Ferrero bouquet", 1750],
+    ["Сладкий микс", 1650],
+    ["Для любимого", 1550],
+    ["Шоколадная нежность", 1700],
+    ["Карамельное счастье", 1600],
+    ["Сладкое признание", 1800]
+
+];
+
+
+
+/* =====================================================
+   ИГРУШКИ — 5 ШТУК
+===================================================== */
+
+const toys = [
+
+    ["Белый мишка", 1490],
+    ["Классический мишка", 1490],
+    ["Розовый зайка", 1390],
+    ["Единорог", 1590],
+    ["Плюшевый котик", 1450]
+
+];
+
+
+
+/* =====================================================
+   ОТКРЫТКИ — 5 ШТУК
+===================================================== */
+
+const cards = [
+
+    ["С любовью", 250],
+    ["Для тебя", 250],
+    ["Ты особенная", 250],
+    ["Моё сердце", 250],
+    ["С днём рождения", 250]
+
+];
+
+
+
+/* =====================================================
+   ФОРМАТ ЦЕНЫ
+===================================================== */
+
+function formatPrice(price) {
+
+    return (
+        price.toLocaleString("ru-RU")
+        + " ₽"
+    );
+
 }
+
+
+
+/* =====================================================
+   ИКОНКА ЕСЛИ ФОТО НЕ НАЙДЕНО
+===================================================== */
+
+function getPlaceholder(type) {
+
+    if (type === "bouquet") {
+
+        return "💐";
+
+    }
+
+
+    if (type === "sweet") {
+
+        return "🍓";
+
+    }
+
+
+    if (type === "toy") {
+
+        return "🧸";
+
+    }
+
+
+    if (type === "card") {
+
+        return "💌";
+
+    }
+
+
+    return "🎁";
+
+}
+
+
+
+/* =====================================================
+   СОЗДАНИЕ КАРТОЧКИ ТОВАРА
+===================================================== */
+
+function createProduct(
+    product,
+    type,
+    number
+) {
+
+
+    const name =
+        product[0];
+
+
+    const price =
+        product[1];
+
+
+    /*
+       ВАЖНО:
+
+       Твои реальные файлы:
+
+       bouquet1.jpg
+       bouquet2.jpg
+       ...
+       bouquet28.jpg
+
+       sweet1.jpg
+       ...
+       sweet7.jpg
+
+       toy1.jpg
+       ...
+       toy5.jpg
+
+       card1.jpg
+       ...
+       card5.jpg
+    */
+
+
+    let imageName =
+        "";
+
+
+    if (type === "bouquet") {
+
+        imageName =
+            `bouquet${number}`;
+
+    }
+
+
+    if (type === "sweet") {
+
+        imageName =
+            `sweet${number}`;
+
+    }
+
+
+    if (type === "toy") {
+
+        imageName =
+            `toy${number}`;
+
+    }
+
+
+    if (type === "card") {
+
+        imageName =
+            `card${number}`;
+
+    }
+
+
+
+    const card =
+        document.createElement(
+            "article"
+        );
+
+
+    card.className =
+        "product";
+
+
+    card.innerHTML = `
+
+        <button
+            class="favorite"
+            aria-label="Добавить в избранное"
+            type="button"
+        >
+            ♡
+        </button>
+
+
+        <div class="product-image">
+
+            <img
+                src="images/${imageName}.jpg"
+                alt="${name}"
+                loading="lazy"
+            >
+
+        </div>
+
+
+        <div class="product-info">
+
+            <div class="product-name">
+                ${name}
+            </div>
+
+
+            <div class="product-price">
+                ${formatPrice(price)}
+            </div>
+
+
+            <button
+                class="buy-button"
+                type="button"
+            >
+                Купить
+            </button>
+
+        </div>
+
+    `;
+
+
+
+    /* =====================================================
+       ЕСЛИ ФОТО НЕ НАЙДЕНО
+    ===================================================== */
+
+    const image =
+        card.querySelector(
+            ".product-image img"
+        );
+
+
+    image.onerror =
+        function() {
+
+            this.style.display =
+                "none";
+
+
+            const placeholder =
+                document.createElement(
+                    "div"
+                );
+
+
+            placeholder.className =
+                "product-placeholder";
+
+
+            placeholder.textContent =
+                getPlaceholder(type);
+
+
+            this.parentElement
+                .appendChild(
+                    placeholder
+                );
+
+        };
+
+
+
+    /* =====================================================
+       ИЗБРАННОЕ
+    ===================================================== */
+
+    const favorite =
+        card.querySelector(
+            ".favorite"
+        );
+
+
+    favorite.addEventListener(
+        "click",
+        function() {
+
+
+            favorite.classList.toggle(
+                "active"
+            );
+
+
+            favorite.textContent =
+                favorite.classList.contains(
+                    "active"
+                )
+
+                ? "♥"
+
+                : "♡";
+
+        }
+    );
+
+
+
+    /* =====================================================
+       КНОПКА КУПИТЬ
+    ===================================================== */
+
+    const buyButton =
+        card.querySelector(
+            ".buy-button"
+        );
+
+
+    buyButton.addEventListener(
+        "click",
+        function() {
+
+
+            showToast(
+                `«${name}» выбран`
+            );
+
+
+            setTimeout(
+                function() {
+
+                    window.open(
+                        TELEGRAM_CHANNEL,
+                        "_blank"
+                    );
+
+                },
+                500
+            );
+
+        }
+    );
+
+
+    return card;
+
+}
+
+
+
+/* =====================================================
+   ЗАГРУЗКА ТОВАРОВ
+===================================================== */
+
+function loadProducts(
+    elementId,
+    products,
+    type
+) {
+
+
+    const container =
+        document.getElementById(
+            elementId
+        );
+
+
+    products.forEach(
+        function(
+            product,
+            index
+        ) {
+
+
+            const card =
+                createProduct(
+                    product,
+                    type,
+                    index + 1
+                );
+
+
+            container.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
+   УВЕДОМЛЕНИЕ
+===================================================== */
+
+function showToast(text) {
+
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.textContent =
+        text;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    setTimeout(
+        function() {
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },
+        2000
+    );
+
+}
+
+
+
+/* =====================================================
+   ЗАПУСК
+===================================================== */
+
+loadProducts(
+    "bouquets-list",
+    bouquets,
+    "bouquet"
+);
+
+
+loadProducts(
+    "sweet-list",
+    sweetBouquets,
+    "sweet"
+);
+
+
+loadProducts(
+    "toys-list",
+    toys,
+    "toy"
+);
+
+
+loadProducts(
+    "cards-list",
+    cards,
+    "card"
+);
+
 
 </script>
 
+
 </body>
+
 </html>
